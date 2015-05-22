@@ -57,6 +57,14 @@ class Pen:
         self.linewidth = 1.0
         self.fontsize = 14.0
         self.fontname = "Times-Roman"
+        self.bold = False
+        self.italic = False
+        self.underline = False
+        self.superscript = False
+        self.subscript = False
+        self.strikethrough = False
+        self.overline = False
+
         self.dash = ()
 
     def copy(self):
@@ -70,7 +78,6 @@ class Pen:
         pen.color = (1, 0, 0, 1)
         pen.fillcolor = (1, .8, .8, 1)
         return pen
-
 
 class Shape:
     """Abstract base class for all the drawing shapes."""
@@ -587,7 +594,7 @@ class XDotAttrParser:
         return res
 
     def read_polygon(self):
-        n = self.read_number()
+        n = self.read_int()
         p = []
         for i in range(n):
             x, y = self.read_point()
